@@ -1,0 +1,351 @@
+<!-- gemini -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to {{ title }}!</h1>
+    <p>You have successfully created your first Flask app.</p>
+</body>
+</html>
+
+
+<!-- claud  -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Flask Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f0e8;
+      --ink: #1a1714;
+      --accent: #c0392b;
+      --muted: #8a7f72;
+      --card: #fffdf8;
+      --border: #ddd5c5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      border-bottom: 1px solid var(--border);
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 4rem;
+      align-items: center;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--ink);
+      color: var(--bg);
+      text-decoration: none;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn:hover { background: var(--accent); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      margin-left: 1rem;
+    }
+
+    .btn-outline:hover { background: var(--ink); color: var(--bg); }
+
+    /* ── DECORATIVE SIDE ── */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .big-shape {
+      width: 320px;
+      height: 320px;
+      border: 2px solid var(--border);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .big-shape::before {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .big-shape .inner-text {
+      position: relative;
+      z-index: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--accent);
+      opacity: 0.15;
+      font-style: italic;
+    }
+
+    .big-shape .tag {
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+    }
+
+    /* ── CARDS ── */
+    .cards-section {
+      padding: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.07);
+    }
+
+    .card-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav ul { gap: 1.2rem; }
+      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 3rem; }
+      .hero-visual { display: none; }
+      .cards { grid-template-columns: 1fr; }
+      .cards-section { padding: 2rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">My<span>Flask</span></div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Built with<br><em>Flask</em> &amp;<br>pure craft.</h1>
+      <p>A clean, simple starting point for your Flask project. No frameworks, no clutter — just well-structured HTML and CSS ready to grow.</p>
+      <a href="#" class="btn">Get Started</a>
+      <a href="#" class="btn btn-outline">Learn More</a>
+    </div>
+    <div class="hero-visual">
+      <div class="big-shape">
+        <span class="inner-text">F</span>
+        <span class="tag">Flask</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards-section">
+    <div class="section-label">Features</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Lightweight</h3>
+        <p>No heavy dependencies — Flask keeps your stack lean and your server fast.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Templating</h3>
+        <p>Jinja2 templates let you build dynamic pages with clean, readable syntax.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>Extensible</h3>
+        <p>Add databases, auth, or APIs whenever you need them — Flask grows with you.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>My Flask App</span>
+    <span>Built with Python &amp; Flask</span>
+  </footer>
+
+</body>
+</html> -->
