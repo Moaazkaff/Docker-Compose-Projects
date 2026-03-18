@@ -1,0 +1,62 @@
+version : "3.8"
+
+services:
+  
+  Web-App1:
+    image: my-flask-app:v1
+    container_name: Flask1
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db1
+    environment:
+        MYSQL_HOST: db1
+        MYSQL_USER: flask-user
+        MYSQL_PASSWORD: moaaz
+        MYSQL_DATABASE: flask-db
+    volumes:
+      - flask-files1:/app
+    
+  db1:
+    image: mysql:8.0
+    container_name: database-1
+    volumes:
+      - mysql-db1:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password 
+      MYSQL_USER : flask-user
+      MYSQL_PASSWORD : moaaz
+      MYSQL_DATABASE : flask-db
+
+  Web-App2:
+    image: my-flask-app:v2.1
+    container_name: Flask2
+    ports:
+      - "5001:5000"
+    depends_on:
+      - db2
+    environment:
+        MYSQL_HOST: db2
+        MYSQL_USER: flask-user
+        MYSQL_PASSWORD: moaaz
+        MYSQL_DATABASE: flask-db
+    volumes:
+      - flask-files2:/app
+    
+  db2:
+    image: mysql:8.0
+    container_name: database-2
+    volumes:
+      - mysql-db2:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password 
+      MYSQL_USER : flask-user
+      MYSQL_PASSWORD : moaaz
+      MYSQL_DATABASE : flask-db
+
+
+volumes:
+  mysql-db1: 
+  flask-files1:
+  mysql-db2: 
+  flask-files2:
