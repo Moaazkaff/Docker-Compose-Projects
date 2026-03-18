@@ -2,7 +2,7 @@ FROM  alpine:3.21
 
 WORKDIR /flask-app
 
-COPY  app /home/moaaz-kaff/Docker/Docker-Compose-Projects/requirments.txt /flask-app/ 
+COPY app requirments.txt /flask-app/ 
 
 RUN apk update && apk add --no-cache  python3 py3-pip && pip install --break-system-packages -r requirments.txt
 
