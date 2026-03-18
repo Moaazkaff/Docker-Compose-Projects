@@ -3,7 +3,7 @@ version : "3.8"
 services:
   
   Web-App1:
-    image: my-flask-app:v1
+    image: moaaz65/my-flask-app:v1
     container_name: Flask1
     ports:
       - "5000:5000"
@@ -29,7 +29,7 @@ services:
       MYSQL_DATABASE : flask-db
 
   Web-App2:
-    image: my-flask-app:v2.1
+    image: moaaz65/my-flask-app:v2.1
     container_name: Flask2
     ports:
       - "5001:5000"
