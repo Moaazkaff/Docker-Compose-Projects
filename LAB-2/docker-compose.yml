@@ -1,0 +1,61 @@
+version: "3.8"
+
+services:
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    # restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - wordpress
+      - phpmyadmin
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST     : mysql
+      WORDPRESS_DB_USER     : wordpress-user
+      WORDPRESS_DB_PASSWORD : wordpress-password
+      WORDPRESS_DB_NAME     : wordpress
+    depends_on:
+      - mysql
+    volumes:
+      - wordpress-files:/var/www/html
+  mysql:
+    image: mysql:8.0
+    restart: always
+    container_name: wordpress-database
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER         : wordpress-user
+      MYSQL_PASSWORD     : wordpress-password
+      MYSQL_DATABASE     : wordpress
+    volumes:
+      - db:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    container_name: admin
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST      : mysql
+      PMA_PORT      : 3306
+      PMA_USER      : wordpress-user
+      PMA_PASSWORD  : wordpress-password
+    depends_on:
+      - mysql
+    
+    
+volumes:
+  db:
+  wordpress-files:
+    
