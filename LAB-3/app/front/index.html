@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Stack Users App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>👥 Users App</h1>
+    <p class="subtitle">Full Stack — Flask + SQLite + HTML</p>
+  </header>
+
+  <main>
+
+    <!-- ── ADD USER FORM ── -->
+    <section class="card">
+      <h2>Add User</h2>
+      <div class="form-row">
+        <input
+          id="inp-name"
+          type="text"
+          placeholder="Full name"
+          autocomplete="off"
+        />
+        <input
+          id="inp-email"
+          type="email"
+          placeholder="Email address"
+          autocomplete="off"
+        />
+        <button id="btn-add" onclick="addUser()">+ Add User</button>
+      </div>
+      <p id="form-msg" class="form-msg"></p>
+    </section>
+
+    <!-- ── USER LIST ── -->
+    <section class="card">
+      <div class="list-header">
+        <h2>All Users</h2>
+        <button onclick="getUsers()">⟳ Refresh</button>
+      </div>
+
+      <div id="user-list">
+        <p class="empty">Click Refresh to load users</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+
+</body>
+</html>

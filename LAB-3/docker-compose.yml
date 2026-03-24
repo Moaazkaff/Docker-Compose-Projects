@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+  frontend:
+    image: frontend:v1.2
+    restart: always
+    container_name: frontend
+    ports:
+      - "80:80"
+    networks:
+      - frontend-network
+    depends_on:
+      - backend
+
+    
+
+
+  backend:
+    image: my-flask-app:v3
+    restart: always
+    container_name: backend
+    environment:
+      DB_HOST: db
+      DB_USER: example
+      DB_PASSWORD: example
+      DB_NAME: example
+    ports:
+      - "5000:5000"
+    networks:
+      - backend-network
+      - frontend-network
+    depends_on:
+      db:
+        condition: service_healthy
+    
+
+
+
+  # Use postgres/example user/password credentials
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: example
+    container_name: db
+    volumes:
+      - postgres-db:/var/lib/postgresql
+      - ./app/back/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U example -d example"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+    
+  
+
+volumes:
+  postgres-db:
+  
+
+networks:
+  frontend-network:
+    driver: bridge
+  backend-network:
+    internal: true
+    driver: bridge
+
+

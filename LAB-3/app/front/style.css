@@ -1,0 +1,205 @@
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f5f5f0;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+header {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 28px 40px;
+}
+
+header h1 { font-size: 24px; font-weight: 600; }
+header .subtitle { font-size: 13px; color: #8888aa; margin-top: 4px; }
+
+/* ─────────────────────────────────────────
+   MAIN LAYOUT
+───────────────────────────────────────── */
+main {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─────────────────────────────────────────
+   CARDS
+───────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #e5e5e0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.card h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+/* ─────────────────────────────────────────
+   FORM
+───────────────────────────────────────── */
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input[type="text"],
+input[type="email"] {
+  flex: 1;
+  min-width: 160px;
+  padding: 9px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: #fafafa;
+  transition: border-color 0.15s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4f8ef7;
+  background: #fff;
+}
+
+button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+button:hover  { opacity: 0.88; }
+button:active { transform: scale(0.97); }
+
+#btn-add { background: #1a1a2e; color: #fff; }
+
+.form-msg {
+  font-size: 13px;
+  margin-top: 10px;
+  min-height: 18px;
+}
+.form-msg.success { color: #1a7f4b; }
+.form-msg.error   { color: #c0392b; }
+
+/* ─────────────────────────────────────────
+   USER LIST HEADER
+───────────────────────────────────────── */
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.list-header button {
+  background: #f0f0eb;
+  color: #555;
+  font-size: 13px;
+  padding: 7px 14px;
+}
+
+/* ─────────────────────────────────────────
+   USER ITEMS
+───────────────────────────────────────── */
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  cursor: pointer;                     /* ← NEW: show pointer on hover */
+}
+
+.user-item:hover {
+  background: #f5f7ff;                 /* ← updated: blue tint on hover */
+  border-color: #c8d5f8;
+}
+
+/* ── SELECTED STATE ── */            /* ← NEW: all 4 lines below */
+.user-item.selected {
+  background: #eef1fd;
+  border-color: #4f7ef7;
+  box-shadow: 0 0 0 3px rgba(79, 126, 247, 0.12);
+}
+
+.user-item.selected .avatar {
+  background: #4f7ef7;
+  color: #fff;
+}
+
+.user-item.selected .user-name {
+  color: #2a4fd6;
+}
+
+/* ─────────────────────────────────────────
+   AVATAR
+───────────────────────────────────────── */
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e8eef8;
+  color: #3a5fc8;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;   /* ← NEW: smooth avatar transition */
+}
+
+.user-info { flex: 1; }
+.user-name  { font-size: 14px; font-weight: 500; }
+.user-email { font-size: 12px; color: #888; margin-top: 2px; }
+.user-id    { font-size: 11px; color: #bbb; font-family: monospace; }
+
+.btn-delete {
+  background: transparent;
+  color: #ccc;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.btn-delete:hover { background: #fff0f0; color: #e74c3c; }
+
+/* ─────────────────────────────────────────
+   STATES
+───────────────────────────────────────── */
+.empty {
+  text-align: center;
+  color: #bbb;
+  font-size: 14px;
+  padding: 32px 0;
+}
+
+.loading {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  padding: 20px 0;
+}
